@@ -7,4 +7,8 @@ public class CakeModel {
     public boolean hasCandles = true;
     public String blowButton = "BLOW OUT";
 
+    public boolean checkerPlaced = false;
+    public float checkerX = 0;
+    public float checkerY = 0;
+
 }

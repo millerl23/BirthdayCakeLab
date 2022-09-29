@@ -21,6 +21,8 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint redPaint = new Paint();
+    Paint greenPaint = new Paint();
 
 
     /* These constants define the dimensions of the cake.  While defining constants for things
@@ -66,6 +68,10 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        redPaint.setColor(Color.RED); //red
+        redPaint.setStyle(Paint.Style.FILL);
+        greenPaint.setColor(Color.GREEN); //green
+        greenPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -169,6 +175,13 @@ public class CakeView extends SurfaceView implements View.OnTouchListener {
             canvas.drawText( "("+x+","+y+ ")", 1982, 40, textPaint);
             canvas.drawText("  x       y   ", 1970,73, textPaint);
 
+        }
+
+        if (cake.checkerPlaced) {
+            canvas.drawRect(cake.checkerX - 50, cake.checkerY - 50, cake.checkerX, cake.checkerY, greenPaint);
+            canvas.drawRect(cake.checkerX + 50, cake.checkerY + 50, cake.checkerX, cake.checkerY, greenPaint);
+            canvas.drawRect(cake.checkerX, cake.checkerY - 50, cake.checkerX + 50, cake.checkerY, redPaint);
+            canvas.drawRect(cake.checkerX - 50, cake.checkerY, cake.checkerX, cake.checkerY + 50, redPaint);
         }
 
     }//onDraw
