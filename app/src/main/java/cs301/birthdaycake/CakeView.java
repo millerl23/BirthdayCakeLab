@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
@@ -16,6 +17,8 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint balloonPaint = new Paint();
+    Path balloonPath = new Path();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -38,7 +41,7 @@ public class CakeView extends SurfaceView {
 
 
     /**
-     * ctor must be overridden here as per standard Java inheritance practice.  We need it
+     * constructor must be overridden here as per standard Java inheritance practice.  We need it
      * anyway to initialize the member variables
      */
     public CakeView(Context context, AttributeSet attrs) {
@@ -60,6 +63,8 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        balloonPaint.setColor(Color.BLUE);
+        balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -110,6 +115,7 @@ public class CakeView extends SurfaceView {
         float top = cakeTop;
         float bottom = cakeTop + frostHeight;
 
+
         //Frosting on top
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, frostingPaint);
         top += frostHeight;
@@ -154,6 +160,20 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*4 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*5 - candleWidth/2, cakeTop);
+
+        }
+
+        if (cake.hasBalloon){
+            balloonPath.reset();
+            canvas.drawLine(cake.balloonX,cake.balloonY,cake.balloonX,cake.balloonY+300,wickPaint);
+            canvas.drawCircle(cake.balloonX, cake.balloonY, cake.balloonRadius, balloonPaint);
+            balloonPath.moveTo(cake.balloonX-60, cake.balloonY+35);
+            balloonPath.lineTo(cake.balloonX, cake.balloonY+100);
+            balloonPath.lineTo(cake.balloonX+60,cake.balloonY+35);
+            canvas.drawPath(balloonPath, balloonPaint);
+
+
+
 
         }
 
