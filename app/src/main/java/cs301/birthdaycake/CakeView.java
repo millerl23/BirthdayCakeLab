@@ -19,6 +19,7 @@ public class CakeView extends SurfaceView {
     Paint wickPaint = new Paint();
     Paint balloonPaint = new Paint();
     Path balloonPath = new Path();
+    // This is nothin
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
