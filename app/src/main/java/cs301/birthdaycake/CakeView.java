@@ -23,6 +23,8 @@ public class CakeView extends SurfaceView {
     Paint wickPaint = new Paint();
     Paint balloonPaint = new Paint();
     Path balloonPath = new Path();
+    Paint redPaint = new Paint();
+    Paint greenPaint = new Paint();
     // This is nothin
 
 
@@ -42,6 +44,7 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+
     private CakeModel cake;
 
 
@@ -71,6 +74,10 @@ public class CakeView extends SurfaceView {
         wickPaint.setStyle(Paint.Style.FILL);
         balloonPaint.setColor(Color.BLUE);
         balloonPaint.setStyle(Paint.Style.FILL);
+        redPaint.setColor(Color.RED); //red
+        redPaint.setStyle(Paint.Style.FILL);
+        greenPaint.setColor(Color.GREEN); //green
+        greenPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -186,9 +193,12 @@ public class CakeView extends SurfaceView {
             balloonPath.lineTo(cake.balloonX+60,cake.balloonY+35);
             canvas.drawPath(balloonPath, balloonPaint);
 
-
-
-
+        }
+        if (cake.checkerPlaced) {
+            canvas.drawRect(cake.checkerX - 50, cake.checkerY - 50, cake.checkerX, cake.checkerY, greenPaint);
+            canvas.drawRect(cake.checkerX + 50, cake.checkerY + 50, cake.checkerX, cake.checkerY, greenPaint);
+            canvas.drawRect(cake.checkerX, cake.checkerY - 50, cake.checkerX + 50, cake.checkerY, redPaint);
+            canvas.drawRect(cake.checkerX - 50, cake.checkerY, cake.checkerX, cake.checkerY + 50, redPaint);
         }
 
     }//onDraw

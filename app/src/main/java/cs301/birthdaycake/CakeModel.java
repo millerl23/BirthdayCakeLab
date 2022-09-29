@@ -9,6 +9,9 @@ public class CakeModel {
     public boolean hasBalloon = false;
     public float balloonX, balloonY;
     public float balloonRadius = 70;
+    public float checkerX;
+    public float checkerY;
+    public boolean checkerPlaced;
 
 
     public int x;

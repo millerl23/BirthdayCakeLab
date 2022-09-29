@@ -7,11 +7,11 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 
 public class CakeController
-        implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener
-{
+        implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener, View.OnTouchListener {
     private CakeView cv;
     private CakeModel cm;
-    public CakeController(CakeView _cv){
+
+    public CakeController(CakeView _cv) {
         cv = _cv;
         cm = _cv.getCake();
     }
@@ -20,21 +20,23 @@ public class CakeController
     @Override
     public void onClick(View view) {
 
-        if (cm.candlesLit){
+        if (cm.candlesLit) {
             cm.candlesLit = false;
+        } else {
+            cm.candlesLit = true;
         }
-        else { cm.candlesLit = true; }
 
         cv.invalidate();
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        if (cm.hasCandles){
+        if (cm.hasCandles) {
 
             cm.hasCandles = false;
+        } else {
+            cm.hasCandles = true;
         }
-        else { cm.hasCandles = true; }
         cv.invalidate();
 
     }
@@ -59,24 +61,20 @@ public class CakeController
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
 
-        if(motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN){
+        if (motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN) {
             cm.hasBalloon = true;
 
             cm.balloonX = motionEvent.getX();
             cm.balloonY = motionEvent.getY();
-
-
-        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             cm.checkerPlaced = true;
             cm.checkerX = motionEvent.getX();
             cm.checkerY = motionEvent.getY();
             cm.x = (int) motionEvent.getX();
             cm.y = (int) motionEvent.getY();
 
-            return true;
+            cv.invalidate();
         }
 
-        cv.invalidate();
         return true;
     }
 }
