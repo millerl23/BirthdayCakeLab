@@ -11,4 +11,7 @@ public class CakeModel {
     public float checkerX = 0;
     public float checkerY = 0;
 
+    public int x;
+    public int y;
+
 }

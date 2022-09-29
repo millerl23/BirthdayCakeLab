@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         CakeView cakeView = findViewById(R.id.cakeview);
         CakeController cakeController = new CakeController(cakeView);
         System.out.println("4");
-        cakeView.setOnTouchListener(cakeView);
+
 
         cakeView.setOnTouchListener(cakeController);
 

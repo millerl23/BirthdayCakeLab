@@ -10,6 +10,7 @@ public class CakeController
         implements View.OnClickListener, CompoundButton.OnCheckedChangeListener,
                    SeekBar.OnSeekBarChangeListener, View.OnTouchListener
 {
+
     private CakeView cv;
     private CakeModel cm;
     public CakeController(CakeView _cv){
@@ -64,6 +65,10 @@ public class CakeController
             cm.checkerPlaced = true;
             cm.checkerX = motionEvent.getX();
             cm.checkerY = motionEvent.getY();
+            cm.x = (int) motionEvent.getX();
+            cm.y = (int) motionEvent.getY();
+
+            return true;
         }
 
         cv.invalidate();
