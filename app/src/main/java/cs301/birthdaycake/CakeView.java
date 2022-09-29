@@ -7,9 +7,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
+import android.view.MotionEvent;
+import android.view.View;
 
 public class CakeView extends SurfaceView {
 
+
+    Paint textPaint = new Paint();
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
@@ -20,6 +24,7 @@ public class CakeView extends SurfaceView {
     Paint balloonPaint = new Paint();
     Path balloonPath = new Path();
     // This is nothin
+
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -71,7 +76,10 @@ public class CakeView extends SurfaceView {
 
         cake = new CakeModel();
 
-
+        textPaint.setColor(Color.RED);
+        textPaint.setTextAlign(Paint.Align.RIGHT);
+        textPaint.setTextSize(50);
+        cake.x = -1;
     }
 
     /**
@@ -161,6 +169,11 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*4 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + (cakeWidth/6)*5 - candleWidth/2, cakeTop);
+        }
+
+        if (cake.x >= 0){
+            canvas.drawText( "("+cake.x+","+cake.y+ ")", 1982, 40, textPaint);
+            canvas.drawText("  x       y   ", 1970,73, textPaint);
 
         }
 
@@ -183,5 +196,6 @@ public class CakeView extends SurfaceView {
     public CakeModel getCake() {
         return cake;
     }
+
 }//class CakeView
 

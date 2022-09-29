@@ -11,4 +11,7 @@ public class CakeModel {
     public float balloonRadius = 70;
 
 
+    public int x;
+    public int y;
+
 }

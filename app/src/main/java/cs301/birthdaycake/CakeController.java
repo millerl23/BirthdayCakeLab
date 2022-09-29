@@ -66,10 +66,17 @@ public class CakeController
             cm.balloonY = motionEvent.getY();
 
 
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            cm.checkerPlaced = true;
+            cm.checkerX = motionEvent.getX();
+            cm.checkerY = motionEvent.getY();
+            cm.x = (int) motionEvent.getX();
+            cm.y = (int) motionEvent.getY();
+
+            return true;
         }
+
         cv.invalidate();
-
-
-        return false;
+        return true;
     }
 }

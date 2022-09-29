@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         CakeView cakeView = findViewById(R.id.cakeview);
         CakeController cakeController = new CakeController(cakeView);
         System.out.println("4");
-        cakeView.setOnTouchListener(cakeController);
 
+        cakeView.setOnTouchListener(cakeController);
 
         Button blowout = findViewById(R.id.blowOut);
         blowout.setOnClickListener(cakeController);
